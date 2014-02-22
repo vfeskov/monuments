@@ -1,11 +1,11 @@
 {
-  "name": "vfDno",
+  "name": "vfMonuments",
   "version": "0.1.0",
-  "homepage": "https://github.com/vfeskov/end-to-end-with-angularjs",
+  "homepage": "https://github.com/vfeskov/monuments",
   "authors": [
     "Vladimir Feskov <v@vladimirfeskov.com>"
   ],
-  "description": "Allows suggesting movies and voting",
+  "description": "Monuments",
   "license": "MIT",
   "private": true,
   "ignore": [
