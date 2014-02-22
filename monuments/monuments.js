@@ -7,7 +7,7 @@
 
         $locationProvider.html5Mode(true).hashPrefix('!');
 
-        //$routeProvider.otherwise({ redirectTo: '/collections' });
+        $routeProvider.otherwise({ redirectTo: '/collections' });
     });
 
     module.config(function($httpProvider){
