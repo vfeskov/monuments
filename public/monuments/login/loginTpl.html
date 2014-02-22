@@ -1,0 +1,30 @@
+<div class="container-fluid" id="login">
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+            <form ng-submit="submit()">
+                <fieldset class="radius">
+                    <div class="form-group">
+                        <input type="text" name="email" placeholder="email" ng-model="credentials.email"
+                               class="form-control" required/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" placeholder="password" class="form-control"
+                               ng-model="credentials.password"
+                               required/>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="register">&nbsp;Register
+                        </label>
+                    </div>
+                    <div class="form-group" ng-if="register">
+                        <input type="password" name="password_confirmation" placeholder="password confirmation" ng-model="credentials.password_confirmation"
+                               class="form-control"
+                               required/>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><span ng-if="register">Register &amp; </span>Log In</button></a>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

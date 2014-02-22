@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <h1>Collections</h1>
+        <div class="list-group monuments-collections">
+            <div ng-repeat="collection in collections track by collection.id" class="list-group-item" ng-controller="monumentsCollectionsItemCtrl">
+                <h3>
+                    <span ng-hide="isEdited">
+                        <a href="/collections/{{collection.id}}/monuments">{{collection.name}} <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    </span>
+                    <span ng-show="isEdited">
+                        <input type="text" ng-model="newName" />
+                        <button class="btn btn-success" ng-click="saveEdit()"><span class="glyphicon glyphicon-ok"></span></button>
+                        <button class="btn btn-danger" ng-click="cancelEdit()"><span class="glyphicon glyphicon-remove"></span></button>
+                    </span>
+                </h3>
+                <button ng-hide="isEdited" class="btn btn-primary" ng-click="edit()">Rename</button>
+                <button class="btn btn-danger" ng-click="delete()">Delete</button>
+            </div>
+        </div>
+
+        <div ng-controller="monumentsCollectionsCreateCtrl">
+            <input type="text" ng-model="name" placeholder="Name of new collection"/>
+            <button class="btn btn-success" ng-click="create()">Create</button>
+        </div>
+    </div>
+</div>
