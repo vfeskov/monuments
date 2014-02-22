@@ -26,6 +26,10 @@
     <script src="/monuments/monuments/monuments.js"></script>
     <script src="/monuments/monuments/monumentsSvc.js"></script>
     <script src="/monuments/monuments/monumentsCtrl.js"></script>
+    <script src="/monuments/pictures/pictures.js"></script>
+    <script src="/monuments/pictures/picturesSvc.js"></script>
+    <script src="/monuments/pictures/picturesCtrl.js"></script>
+    <script src="/monuments/pictures/picturesFileReaderDir.js"></script>
     <script>
         angular.module("monuments").constant("CSRF_TOKEN", '<?php echo csrf_token(); ?>');
     </script>

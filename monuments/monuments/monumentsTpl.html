@@ -1,12 +1,12 @@
 <div class="container">
     <div class="row">
         <h1>Monuments</h1>
-        <h2>Collection: {{collection.name}}</h2>
+        <h2>Collection: <a href="/collections/{{collection.id}}/monuments">{{collection.name}}</a></h2>
         <div class="list-group monuments-collections-monuments">
             <div ng-repeat="monument in monuments track by monument.id"  class="list-group-item" ng-controller="monumentsMonumentsItemCtrl">
                 <h3>
                     <span ng-hide="isEdited">
-                        <a href="/collections/{{monument.collection_id}}/monuments/{{monument.id}}">
+                        <a href="/collections/{{monument.collection_id}}/monuments/{{monument.id}}/pictures">
                             {{monument.name}}<br />
                             {{monument.description}}<br />
                             {{monument.category_id}}

@@ -1,6 +1,6 @@
 (function(angular){
     'use strict';
-    var module = angular.module('monuments', ['ngRoute', 'ngAnimate', 'angular-growl', 'ngSanitize', 'monumentsLogin', 'monumentsCollections', 'monumentsMonuments']);
+    var module = angular.module('monuments', ['ngRoute', 'ngAnimate', 'angular-growl', 'ngSanitize', 'monumentsLogin', 'monumentsCollections', 'monumentsMonuments', 'monumentsPictures']);
 
     module.config(function($locationProvider, $routeProvider, growlProvider) {
         growlProvider.globalTimeToLive(5000);

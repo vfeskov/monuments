@@ -20,18 +20,56 @@ Route::post('/auth/register', array('before' => 'csrf_json', 'uses' => 'AuthCont
 Route::get('/auth/logout', 'AuthController@logout');
 Route::get('/auth/status', 'AuthController@status');
 
+
+
+
+
+
 Route::post('/services/collections', array('before' => 'csrf_json', 'uses' => 'CollectionsController@create'));
-Route::delete('/services/collections/{id}', 'CollectionsController@delete')->where('id', '\d+');
+Route::delete('/services/collections/{id}', 'CollectionsController@delete')
+    ->where('id', '\d+');
 Route::get('/services/collections', 'CollectionsController@getAll');
-Route::get('/services/collections/{id}', 'CollectionsController@getOne')->where('id', '\d+');
-Route::put('/services/collections/{id}', 'CollectionsController@update')->where('id', '\d+');
+Route::get('/services/collections/{id}', 'CollectionsController@getOne')
+    ->where('id', '\d+');
+Route::put('/services/collections/{id}', 'CollectionsController@update')
+    ->where('id', '\d+');
+
+
+
+
 
 
 Route::post('/services/collections/{collection_id}/monuments', array('before' => 'csrf_json', 'uses' => 'MonumentsController@create'));
 Route::delete('/services/collections/{collection_id}/monuments/{id}', 'MonumentsController@delete')->where('id', '\d+')->where('collection_id', '\d+');
 Route::get('/services/collections/{collection_id}/monuments', 'MonumentsController@getAll');
-Route::get('/services/collections/{collection_id}/monuments/{id}', 'MonumentsController@getOne')->where('id', '\d+')->where('collection_id', '\d+');
-Route::put('/services/collections/{collection_id}/monuments/{id}', 'MonumentsController@update')->where('id', '\d+')->where('collection_id', '\d+');
+Route::get('/services/collections/{collection_id}/monuments/{id}', 'MonumentsController@getOne')
+    ->where('id', '\d+')
+    ->where('collection_id', '\d+');
+Route::put('/services/collections/{collection_id}/monuments/{id}', 'MonumentsController@update')
+    ->where('id', '\d+')
+    ->where('collection_id', '\d+');
+
+
+
+
+
+Route::post('/services/collections/{collection_id}/monuments/{monument_id}/pictures', 'PicturesController@create');
+Route::delete('/services/collections/{collection_id}/monuments/{monument_id}/pictures/{id}', 'PicturesController@delete')
+    ->where('id', '\d+')
+    ->where('collection_id', '\d+')
+    ->where('monument_id', '\d+');
+Route::get('/services/collections/{collection_id}/monuments/{monument_id}/pictures', 'PicturesController@getAll');
+Route::get('/services/collections/{collection_id}/monuments/{monument_id}/pictures/{id}', 'PicturesController@getOne')
+    ->where('id', '\d+')
+    ->where('collection_id', '\d+')
+    ->where('monument_id', '\d+');
+Route::put('/services/collections/{collection_id}/monuments/{monument_id}/pictures/{id}', 'PicturesController@update')
+    ->where('id', '\d+')
+    ->where('collection_id', '\d+')
+    ->where('monument_id', '\d+');
+
+
+
 
 
 Route::get('/{other}', function() {

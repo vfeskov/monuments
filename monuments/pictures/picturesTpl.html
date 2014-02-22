@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <h1>Pictures</h1>
+        <h2>Collection: <a href="/collections/{{collection.id}}/monuments">{{collection.name}}</a></h2>
+        <h2>Monument: <a href="/collections/{{collection.id}}/monuments/{{monument.id}}/pictures">{{monument.name}}</a></h2>
+
+        <div class="row">
+            <div ng-repeat="picture in pictures track by picture.id"  class="col-md-6" ng-controller="monumentsPicturesItemCtrl" >
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4>
+                            <img src="{{picture.image}}" style="max-width:100%" alt="" /><br/>
+                            <span ng-hide="isEdited">
+                                Name: {{picture.name}}<br />
+                                Description: {{picture.description}}<br />
+                                Date: {{picture.date}}
+                            </span>
+                            <span ng-show="isEdited">
+                                <input type="text" ng-model="name" placeholder="Name"/><br/>
+                                <input type="text" ng-model="description" placeholder="Description"/><br/>
+                                <input type="text" ng-model="date" placeholder="Date" /><br/>
+                                <button class="btn btn-success" ng-click="saveEdit()"><span class="glyphicon glyphicon-ok"></span></button>
+                                <button class="btn btn-danger" ng-click="cancelEdit()"><span class="glyphicon glyphicon-remove"></span></button>
+                            </span>
+                        </h4>
+                        <button ng-hide="isEdited" class="btn btn-primary" ng-click="edit()">Edit</button>
+                        <button class="btn btn-danger" ng-click="delete()">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-controller="monumentsPicturesCreateCtrl">
+            <div ng-controller="monumentsPicturesCreateCtrl">
+                <h3>Add new picture</h3>
+                <input type="file" name="image" ng-model="image" accept="image/*" file-reader /><br/>
+                <strong>Preview</strong><br/>
+                <img src="{{image.contents}}" width="100px"/><br/>
+                <input type="text" name="name" ng-model="name" placeholder="Name" required/><br/>
+                <input type="text" name="description" ng-model="description" placeholder="Description"/><br/>
+                <input type="text" name="date" ng-model="date" placeholder="Date"/><br/>
+                <button class="btn btn-success" ng-click="create()">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
