@@ -24,8 +24,8 @@
                     return response.data;
                 });
             },
-            update: function(collectionId, id, name){
-                return $http.put('/services/collections/'+collectionId+'/monuments/'+id, {name: name, csrf_token: CSRF_TOKEN}).then(function(response){
+            update: function(collectionId, id, data){
+                return $http.put('/services/collections/'+collectionId+'/monuments/'+id, angular.extend(data, {csrf_token: CSRF_TOKEN})).then(function(response){
                     return response.data;
                 });
             }

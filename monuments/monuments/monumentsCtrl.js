@@ -25,11 +25,15 @@
             $scope.category_id = $scope.monument.category_id;
         };
         $scope.saveEdit = function(){
-            monumentsMonumentsSvc.update($routeParams.collectionid, $scope.monument.id, $scope.newName).then(function(){
+            monumentsMonumentsSvc.update($routeParams.collectionid, $scope.monument.id, {
+                name: $scope.name,
+                description: $scope.description,
+                category_id: $scope.category_id
+            }).then(function(){
                 $scope.isEdited = false;
-                $scope.collection.name = $scope.name;
-                $scope.collection.description = $scope.description;
-                $scope.collection.category_id = $scope.category_id;
+                $scope.monument.name = $scope.name;
+                $scope.monument.description = $scope.description;
+                $scope.monument.category_id = $scope.category_id;
             }, function(){
                 $scope.name = $scope.monument.name;
                 $scope.description = $scope.monument.description;
