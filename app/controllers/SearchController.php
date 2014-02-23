@@ -15,7 +15,7 @@ class SearchController extends BaseController
         if(!$collections) {
             return Response::json(array('flash'=>'Not found'), 404);
         }
-        $collections_ids = [];
+        $collections_ids = array();
         foreach($collections as $collection){
             $collections_ids[] = $collection->id;
         }
