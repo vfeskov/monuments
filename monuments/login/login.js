@@ -4,7 +4,7 @@
 
     module.config(function($routeProvider) {
         $routeProvider.when('/login', {
-            templateUrl: 'monuments/login/loginTpl.html',
+            templateUrl: '/monuments/login/loginTpl.html',
             controller: 'monumentsLoginCtrl'
         });
     });

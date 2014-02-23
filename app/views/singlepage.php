@@ -30,6 +30,9 @@
     <script src="/monuments/pictures/picturesSvc.js"></script>
     <script src="/monuments/pictures/picturesCtrl.js"></script>
     <script src="/monuments/pictures/picturesFileReaderDir.js"></script>
+    <script src="/monuments/search/search.js"></script>
+    <script src="/monuments/search/searchSvc.js"></script>
+    <script src="/monuments/search/searchCtrl.js"></script>
     <script>
         angular.module("monuments").constant("CSRF_TOKEN", '<?php echo csrf_token(); ?>');
     </script>
@@ -46,7 +49,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Monuments</a>
+            <a class="navbar-brand" href="/">Monuments</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -57,9 +60,9 @@
             </ul>
             <form class="navbar-form navbar-left" role="search" ng-show="isLoggedIn">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" ng-model="searchQuery" placeholder="Search monuments">
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default" ng-click="submitSearch()">Submit</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li ng-show="isLoggedIn"><a ng-click="logout()" href="">Log Out</a></li>

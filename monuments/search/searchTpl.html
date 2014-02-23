@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <h1>Search results for: <strong>{{query}}</strong></h1>
+        <div class="list-group monuments-collections-search">
+            <div ng-repeat="monument in monuments track by monument.id"  class="list-group-item" ng-controller="monumentsMonumentsItemCtrl">
+                <h4>
+                    <a href="/collections/{{monument.collection_id}}/monuments/{{monument.id}}/pictures">
+                        {{monument.name}}<br />
+                        {{monument.description}}<br />
+                        {{monument.category_id}}
+                    </a>
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>

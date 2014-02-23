@@ -12,6 +12,11 @@
                 $location.path('/login');
             });
         };
+        $scope.searchQuery = '';
+        $scope.submitSearch = function(){
+            if(!$scope.searchQuery) return;
+            $location.path('/search/'+$scope.searchQuery);
+        };
     });
 
 }(window.angular));

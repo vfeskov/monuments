@@ -1,6 +1,16 @@
 (function(angular){
     'use strict';
-    var module = angular.module('monuments', ['ngRoute', 'ngAnimate', 'angular-growl', 'ngSanitize', 'monumentsLogin', 'monumentsCollections', 'monumentsMonuments', 'monumentsPictures']);
+    var module = angular.module('monuments', [
+        'ngRoute',
+        'ngAnimate',
+        'angular-growl',
+        'ngSanitize',
+
+        'monumentsLogin',
+        'monumentsCollections',
+        'monumentsMonuments',
+        'monumentsPictures',
+        'monumentsSearch']);
 
     module.config(function($locationProvider, $routeProvider, growlProvider) {
         growlProvider.globalTimeToLive(5000);
@@ -11,7 +21,7 @@
     });
 
     module.config(function($httpProvider){
-        var logsOutUserOn401 = function($location, $q, monumentsSessionSvc) {
+        var logsOutUserOn401 = function($location, $q, monumentsSessionSvc, growl) {
             var success = function(response) {
                 return response;
             };
@@ -20,6 +30,8 @@
                 if(response.status === 401) {
                     monumentsSessionSvc.unset('authenticated');
                     $location.path('/login');
+                } else {
+                    growl.addErrorMessage(response.data.flash);
                 }
                 return $q.reject(response);
             };

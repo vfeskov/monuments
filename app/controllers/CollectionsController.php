@@ -19,7 +19,7 @@ class CollectionsController extends BaseController
         }
         $name = trim(Input::json('name'));
         if(!$name){
-            return Response::json(array('flash'=>'Name is required'), 400); //TODO: add error info
+            return Response::json(array('flash'=>'Name is required'), 400);
         }
         $collection = new Collection();
         $collection->user_id = Auth::user()->id;

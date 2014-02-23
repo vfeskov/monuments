@@ -4,7 +4,7 @@
 
     module.config(function($routeProvider) {
         $routeProvider.when('/collections', {
-            templateUrl: 'monuments/collections/collectionsTpl.html',
+            templateUrl: '/monuments/collections/collectionsTpl.html',
             controller: 'monumentsCollectionsCtrl'
         });
     });

@@ -70,6 +70,10 @@ Route::put('/services/collections/{collection_id}/monuments/{monument_id}/pictur
 
 
 
+Route::post('/services/search', array('before' => 'csrf_json', 'uses' => 'SearchController@search'));
+
+
+
 
 
 Route::get('/{other}', function() {
