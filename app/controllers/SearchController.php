@@ -7,7 +7,7 @@ class SearchController extends BaseController
         if (!Auth::check()) {
             return Response::json(array('flash'=>'Authorization required'), 401);
         }
-        $query = Input::json('query');
+        $query = Input::get('query');
         if(!$query){
             return Response::json(array('flash'=>'Query string is required'), 400);
         }

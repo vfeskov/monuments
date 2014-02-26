@@ -11,7 +11,7 @@ class PicturesController extends BaseController
         if(!$collection){
             return Response::json(array('flash'=>'Collection not found'), 404);
         }
-        if($collection->user_id !== Auth::user()->id){
+        if($collection->user_id != Auth::user()->id){
             return Response::json(array('Forbidden'), 403);
         }
 
@@ -32,7 +32,7 @@ class PicturesController extends BaseController
         if(!$collection){
             return Response::json(array('flash'=>'Collection not found'), 404);
         }
-        if($collection->user_id !== Auth::user()->id){
+        if($collection->user_id != Auth::user()->id){
             return Response::json(array('Forbidden'), 403);
         }
         $name = trim(Input::get('name'));
@@ -64,7 +64,7 @@ class PicturesController extends BaseController
         if(!$collection){
             return Response::json(array('flash'=>'Collection not found'), 404);
         }
-        if($collection->user_id !== Auth::user()->id){
+        if($collection->user_id != Auth::user()->id){
             return Response::json(array('Forbidden'), 403);
         }
         $picture = Picture::where('id', '=', $id)
@@ -87,7 +87,7 @@ class PicturesController extends BaseController
         if(!$collection){
             return Response::json(array('flash'=>'Collection not found'), 404);
         }
-        if($collection->user_id !== Auth::user()->id){
+        if($collection->user_id != Auth::user()->id){
             return Response::json(array('Forbidden'), 403);
         }
         $picture = Picture::where('id', '=', $id)
@@ -112,7 +112,7 @@ class PicturesController extends BaseController
         if(!$collection){
             return Response::json(array('flash'=>'Collection not found'), 404);
         }
-        if($collection->user_id !== Auth::user()->id){
+        if($collection->user_id != Auth::user()->id){
             return Response::json(array('Forbidden'), 403);
         }
         $picture = Picture::where('id', '=', $id)
@@ -122,9 +122,9 @@ class PicturesController extends BaseController
         if(!$picture){
             return Response::json(array('Not found'), 404);
         }
-        $name = trim(Input::json('name'));
-        $description = Input::json('description');
-        $date = Input::json('date');
+        $name = trim(Input::get('name'));
+        $description = Input::get('description');
+        $date = Input::get('date');
         if(!$name){
             return Response::json(array('flash'=>'Name is required'), 400);
         }

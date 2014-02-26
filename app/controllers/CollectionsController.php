@@ -17,7 +17,7 @@ class CollectionsController extends BaseController
         if (!Auth::check()) {
             return Response::json(array('flash'=>'Authorization required'), 401);
         }
-        $name = trim(Input::json('name'));
+        $name = trim(Input::get('name'));
         if(!$name){
             return Response::json(array('flash'=>'Name is required'), 400);
         }
@@ -53,7 +53,7 @@ class CollectionsController extends BaseController
         if(!$collection){
             return Response::json(array('Not found'), 404);
         }
-        if($collection->user_id !== Auth::user()->id){
+        if($collection->user_id != Auth::user()->id){
             return Response::json(array('Forbidden'), 403);
         }
         if($collection->delete()){
@@ -71,11 +71,11 @@ class CollectionsController extends BaseController
         if(!$collection){
             return Response::json(array('Not found'), 404);
         }
-        $name = trim(Input::json('name'));
+        $name = trim(Input::get('name'));
         if(!$name){
             return Response::json(array('flash'=>'Name is required'), 400);
         }
-        if($collection->user_id !== Auth::user()->id){
+        if($collection->user_id != Auth::user()->id){
             return Response::json(array('Forbidden'), 403);
         }
         $collection->name = $name;

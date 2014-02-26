@@ -11,7 +11,7 @@ class MonumentsController extends BaseController
         if(!$collection){
             return Response::json(array('flash'=>'Collection not found'), 404);
         }
-        if($collection->user_id !== Auth::user()->id){
+        if($collection->user_id != Auth::user()->id){
             return Response::json(array('Forbidden'), 403);
         }
         return Response::json(Monument::where('collection_id', '=', $collectionId)->get());
@@ -26,12 +26,12 @@ class MonumentsController extends BaseController
         if(!$collection){
             return Response::json(array('flash'=>'Collection not found'), 404);
         }
-        if($collection->user_id !== Auth::user()->id){
+        if($collection->user_id != Auth::user()->id){
             return Response::json(array('Forbidden'), 403);
         }
-        $name = trim(Input::json('name'));
-        $description = Input::json('description');
-        $categoryId = Input::json('category_id');
+        $name = trim(Input::get('name'));
+        $description = Input::get('description');
+        $categoryId = Input::get('category_id');
         if(!$name){
             return Response::json(array('flash'=>'Name is required'), 400);
         }
@@ -56,7 +56,7 @@ class MonumentsController extends BaseController
         if(!$collection){
             return Response::json(array('flash'=>'Collection not found'), 404);
         }
-        if($collection->user_id !== Auth::user()->id){
+        if($collection->user_id != Auth::user()->id){
             return Response::json(array('Forbidden'), 403);
         }
         $monument = Monument::where('id', '=', $id)->where('collection_id', '=', $collectionId)->first();
@@ -76,7 +76,7 @@ class MonumentsController extends BaseController
         if(!$collection){
             return Response::json(array('flash'=>'Collection not found'), 404);
         }
-        if($collection->user_id !== Auth::user()->id){
+        if($collection->user_id != Auth::user()->id){
             return Response::json(array('Forbidden'), 403);
         }
         $monument = Monument::where('id', '=', $id)->where('collection_id', '=', $collectionId)->first();
@@ -98,16 +98,16 @@ class MonumentsController extends BaseController
         if(!$collection){
             return Response::json(array('flash'=>'Collection not found'), 404);
         }
-        if($collection->user_id !== Auth::user()->id){
+        if($collection->user_id != Auth::user()->id){
             return Response::json(array('Forbidden'), 403);
         }
         $monument = Monument::where('id', '=', $id)->where('collection_id', '=', $collectionId)->first();
         if(!$monument){
             return Response::json(array('Not found'), 404);
         }
-        $name = trim(Input::json('name'));
-        $description = Input::json('description');
-        $categoryId = Input::json('category_id');
+        $name = trim(Input::get('name'));
+        $description = Input::get('description');
+        $categoryId = Input::get('category_id');
         if(!$name){
             return Response::json(array('flash'=>'Name is required'), 400);
         }

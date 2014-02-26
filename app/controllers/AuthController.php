@@ -11,7 +11,7 @@ class AuthController extends BaseController
     public function register()
     {
         $password = Input::json('password');
-        if ($password !== Input::json('password_confirmation')) {
+        if ($password != Input::json('password_confirmation')) {
             return Response::json(array('flash' => 'Invalid password confirmation'), 403);
         } else {
             $user = new User();
