@@ -74,7 +74,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <ol class="breadcrumb" ng-hide="isSearch()">
+            <ol class="breadcrumb" ng-show="isCollections()">
                 <li><a href="/">Home</a></li>
                 <li class="active" ng-hide="currentCollection">Collections</li>
                 <li ng-show="currentCollection"><a href="/collections/{{currentCollection.id}}/monuments">{{currentCollection.name}}</a></li>

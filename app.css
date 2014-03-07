@@ -1,3 +1,4 @@
+[type=password].form-control,
 [type=text].form-control{
     width:100%;
     max-width:200px;
