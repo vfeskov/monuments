@@ -1,26 +1,30 @@
-<div class="container">
-    <div class="row">
-        <h1>Collections</h1>
-        <div class="list-group monuments-collections">
-            <div ng-repeat="collection in collections track by collection.id" class="list-group-item" ng-controller="monumentsCollectionsItemCtrl">
-                <h3>
-                    <span ng-hide="isEdited">
-                        <a href="/collections/{{collection.id}}/monuments">{{collection.name}} <span class="glyphicon glyphicon-chevron-right"></span></a>
-                    </span>
-                    <span ng-show="isEdited">
-                        <input type="text" ng-model="newName" />
-                        <button class="btn btn-success" ng-click="saveEdit()"><span class="glyphicon glyphicon-ok"></span></button>
-                        <button class="btn btn-danger" ng-click="cancelEdit()"><span class="glyphicon glyphicon-remove"></span></button>
-                    </span>
-                </h3>
-                <button ng-hide="isEdited" class="btn btn-primary" ng-click="edit()">Rename</button>
-                <button class="btn btn-danger" ng-click="delete()">Delete</button>
-            </div>
+<h1>Collections</h1>
+<div class="list-group monuments-collections">
+    <div ng-repeat="collection in collections track by collection.id" class="list-group-item" ng-controller="monumentsCollectionsItemCtrl">
+        <h3>
+            Name:
+            <span ng-hide="isEdited">
+                {{collection.name}}
+            </span>
+            <span ng-show="isEdited">
+                <input type="text" ng-model="newName" required class="form-control"/>
+            </span>
+        </h3>
+        <div ng-hide="isEdited">
+            <p><a href="/collections/{{collection.id}}/monuments" class="btn btn-success btn-lg">Monuments <span class="glyphicon glyphicon-arrow-right"></span></a></p>
+            <button class="btn btn-primary" ng-click="edit()">Edit <span class="glyphicon glyphicon-pencil"></span></button>
+            <button class="btn btn-danger" ng-click="delete()">Delete <span class="glyphicon glyphicon-trash"></span></button>
         </div>
-
-        <div ng-controller="monumentsCollectionsCreateCtrl">
-            <input type="text" ng-model="name" placeholder="Name of new collection"/>
-            <button class="btn btn-success" ng-click="create()">Create</button>
+        <div ng-show="isEdited">
+            <button class="btn btn-success" ng-click="saveEdit()">Save <span class="glyphicon glyphicon-ok"></span></button>
+            <button class="btn btn-danger" ng-click="cancelEdit()">Cancel <span class="glyphicon glyphicon-remove"></span></button>
         </div>
     </div>
+</div>
+<div ng-controller="monumentsCollectionsCreateCtrl" class="panel panel-default">
+    <div class="panel-heading">Add new collection</div>
+    <form ng-submit="create()" class="panel-body">
+        <p><input type="text" ng-model="name" required placeholder="Name" class="form-control"/></p>
+        <input class="btn btn-success" type="submit" value="Add" />
+    </form>
 </div>

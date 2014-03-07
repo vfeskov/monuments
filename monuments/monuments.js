@@ -55,6 +55,9 @@
                 //$location.path('/collections');
             }
         });
+
+        $rootScope.currentCollection = {name: '...'};
+        $rootScope.currentMonument = {name: '...'};
     });
 
 }(window.angular));

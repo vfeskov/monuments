@@ -3,6 +3,9 @@
     var module = angular.module('monuments');
 
     module.controller('monumentsCtrl', function($scope, $location, monumentsAuthSvc){
+        $scope.isSearch = function(){
+            return $location.path().indexOf('/search/')>-1;
+        };
         $scope.isLoggedIn = monumentsAuthSvc.isLoggedIn();
         monumentsAuthSvc.watch(function(isLoggedIn){
             $scope.isLoggedIn = isLoggedIn;

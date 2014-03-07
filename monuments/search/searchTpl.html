@@ -1,16 +1,14 @@
-<div class="container">
-    <div class="row">
-        <h1>Search results for: <strong>{{query}}</strong></h1>
-        <div class="list-group monuments-collections-search">
-            <div ng-repeat="monument in monuments track by monument.id"  class="list-group-item" ng-controller="monumentsMonumentsItemCtrl">
-                <h4>
-                    <a href="/collections/{{monument.collection_id}}/monuments/{{monument.id}}/pictures">
-                        {{monument.name}}<br />
-                        {{monument.description}}<br />
-                        {{monument.category_id}}
-                    </a>
-                </h4>
-            </div>
-        </div>
+<h1>Search results for: <strong>{{query}}</strong></h1>
+<div class="list-group monuments-collections-search" ng-if="monuments && monuments.length">
+    <div ng-repeat="monument in monuments track by monument.id"  class="list-group-item" ng-controller="monumentsMonumentsItemCtrl">
+        <h4>
+            <p>Name: <span ng-hide="isEdited">{{monument.name}}</span><input type="text" class="form-control" required ng-show="isEdited" ng-model="name" placeholder="Name"/></p>
+            <p>Description: <span ng-hide="isEdited">{{monument.description}}</span><input type="text" class="form-control" ng-show="isEdited" ng-model="description" placeholder="Description"/></p>
+            <p>Category ID: <span ng-hide="isEdited">{{monument.category_id}}</span><input type="text" class="form-control" ng-show="isEdited" ng-model="category_id" placeholder="Category ID" /></p>
+        </h4>
+        <p><a href="/collections/{{monument.collection_id}}/monuments/{{monument.id}}/pictures" class="btn btn-success btn-lg">Pictures <span class="glyphicon glyphicon-arrow-right"></span></a></p>
     </div>
+</div>
+<div ng-if="monuments && !monuments.length">
+    <h4>No monuments matched search criteria</h4>
 </div>

@@ -1,0 +1,5 @@
+[type=text].form-control{
+    width:100%;
+    max-width:200px;
+    display:inline-block;
+}

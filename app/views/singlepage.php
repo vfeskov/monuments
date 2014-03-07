@@ -56,7 +56,6 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav" ng-show="isLoggedIn">
                 <li><a href="/collections">Collections</a></li>
-                <li><a href="/categories">Categories</a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search" ng-show="isLoggedIn">
                 <div class="form-group">
@@ -72,7 +71,22 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div id="view" ng-view></div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <ol class="breadcrumb" ng-hide="isSearch()">
+                <li><a href="/">Home</a></li>
+                <li class="active" ng-hide="currentCollection">Collections</li>
+                <li ng-show="currentCollection"><a href="/collections/{{currentCollection.id}}/monuments">{{currentCollection.name}}</a></li>
+                <li class="active" ng-show="currentCollection && !currentMonument">Monuments</li>
+                <li ng-show="currentCollection && currentMonument"><a href="/collections/{{currentCollection.id}}/monuments/{{currentMonument.id}}/pictures">{{currentMonument.name}}</a></li>
+                <li class="active" ng-show="currentCollection && currentMonument">Pictures</li>
+            </ol>
+            <img src="/img/ajax-loader.gif" class="pull-right" ng-show="loading" />
+            <div id="view" ng-view></div>
+        </div>
+    </div>
+</div>
 
 <div growl></div>
 </body>

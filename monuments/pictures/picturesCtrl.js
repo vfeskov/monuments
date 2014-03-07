@@ -2,14 +2,16 @@
     'use strict';
     var module = angular.module('monumentsPictures');
 
-    module.controller("monumentsPicturesCtrl", function($scope, monumentsAuthSvc, monumentsCollectionsSvc, monumentsMonumentsSvc, monumentsPicturesSvc, $routeParams) {
+    module.controller("monumentsPicturesCtrl", function($scope, monumentsAuthSvc, monumentsCollectionsSvc, monumentsMonumentsSvc, monumentsPicturesSvc, $routeParams, $rootScope) {
+        $rootScope.loading = true;
         monumentsCollectionsSvc.getOne($routeParams.collectionid).then(function(collection){
-            $scope.collection = collection;
+            $rootScope.currentCollection = collection;
         });
         monumentsMonumentsSvc.getOne($routeParams.collectionid, $routeParams.monumentid).then(function(monument){
-            $scope.monument = monument;
+            $rootScope.currentMonument = monument;
         });
         monumentsPicturesSvc.getAll($routeParams.collectionid, $routeParams.monumentid).then(function(pictures){
+            $rootScope.loading = false;
             $scope.pictures = pictures;
         });
     });

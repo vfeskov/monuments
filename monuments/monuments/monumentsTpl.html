@@ -1,36 +1,30 @@
-<div class="container">
-    <div class="row">
-        <h1>Monuments</h1>
-        <h2>Collection: <a href="/collections/{{collection.id}}/monuments">{{collection.name}}</a></h2>
-        <div class="list-group monuments-collections-monuments">
-            <div ng-repeat="monument in monuments track by monument.id"  class="list-group-item" ng-controller="monumentsMonumentsItemCtrl">
-                <h3>
-                    <span ng-hide="isEdited">
-                        <a href="/collections/{{monument.collection_id}}/monuments/{{monument.id}}/pictures">
-                            {{monument.name}}<br />
-                            {{monument.description}}<br />
-                            {{monument.category_id}}
-                        </a>
-                    </span>
-                    <span ng-show="isEdited">
-                        <input type="text" ng-model="name" placeholder="Name"/><br/>
-                        <input type="text" ng-model="description" placeholder="Description"/><br/>
-                        <input type="text" ng-model="category_id" placeholder="Category ID" /><br/>
-                        <button class="btn btn-success" ng-click="saveEdit()"><span class="glyphicon glyphicon-ok"></span></button>
-                        <button class="btn btn-danger" ng-click="cancelEdit()"><span class="glyphicon glyphicon-remove"></span></button>
-                    </span>
-                </h3>
-                <button ng-hide="isEdited" class="btn btn-primary" ng-click="edit()">Edit</button>
-                <button class="btn btn-danger" ng-click="delete()">Delete</button>
-            </div>
+<h1>Monuments</h1>
+<div class="list-group monuments-collections-monuments">
+    <div ng-repeat="monument in monuments track by monument.id"  class="list-group-item" ng-controller="monumentsMonumentsItemCtrl">
+        <h3>
+            <p>Name: <span ng-hide="isEdited">{{monument.name}}</span><input type="text" class="form-control" required ng-show="isEdited" ng-model="name" placeholder="Name"/></p>
+            <p>Description: <span ng-hide="isEdited">{{monument.description}}</span><input type="text" class="form-control" ng-show="isEdited" ng-model="description" placeholder="Description"/></p>
+            <p>Category ID: <span ng-hide="isEdited">{{monument.category_id}}</span><input type="text" class="form-control" ng-show="isEdited" ng-model="category_id" placeholder="Category ID" /></p>
+        </h3>
+        <div ng-hide="isEdited">
+            <p><a href="/collections/{{monument.collection_id}}/monuments/{{monument.id}}/pictures" class="btn btn-success btn-lg">Pictures <span class="glyphicon glyphicon-arrow-right"></span></a></p>
+            <button class="btn btn-primary" ng-click="edit()">Edit <span class="glyphicon glyphicon-pencil"></span></button>
+            <button class="btn btn-danger" ng-click="delete()">Delete <span class="glyphicon glyphicon-trash"></span></button>
         </div>
-
-        <div ng-controller="monumentsMonumentsCreateCtrl">
-            <h3>Add new monument</h3>
-            <input type="text" ng-model="name" placeholder="Name"/><br/>
-            <input type="text" ng-model="description" placeholder="Description"/><br/>
-            <input type="text" ng-model="category_id" placeholder="Category ID"/><br/>
-            <button class="btn btn-success" ng-click="create()">Add</button>
+        <div ng-show="isEdited">
+            <button class="btn btn-success" ng-click="saveEdit()">Save <span class="glyphicon glyphicon-ok"></span></button>
+            <button class="btn btn-danger" ng-click="cancelEdit()">Cancel <span class="glyphicon glyphicon-remove"></span></button>
         </div>
     </div>
+</div>
+
+
+<div ng-controller="monumentsMonumentsCreateCtrl" class="panel panel-default">
+    <div class="panel-heading">Add new monument</div>
+    <form ng-submit="create()" class="panel-body">
+        <p><input type="text" required ng-model="name" placeholder="Name" class="form-control"/></p>
+        <p><input type="text" ng-model="description" placeholder="Description" class="form-control"/></p>
+        <p><input type="text" ng-model="category_id" placeholder="Category ID" class="form-control"/></p>
+        <input class="btn btn-success" type="submit" value="Add" />
+    </form>
 </div>
